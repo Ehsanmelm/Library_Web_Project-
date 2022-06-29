@@ -43,3 +43,28 @@ def save_users_info(request: Request, name=Form(...), pas=Form(...), confirm_pas
 
     else:
         return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": "*******confirm password isnot correct*******"})
+
+# ***********************************************
+# *****************Remove member*****************
+
+
+@webapp.get("/Rmove member", response_class=HTMLResponse)
+def remove_member(request: Request):
+    return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": ""})
+
+
+@webapp.post("/user_removing_process", response_class=HTMLResponse)
+def user_removing_process(request: Request, remove_name=Form(...), remove_pas=Form(...)):
+    remove_name = remove_name.lower()
+    with open("users.json", "r") as js_file:
+        UsersInfo = json.load(js_file)
+        if((remove_name in UsersInfo) and UsersInfo[remove_name] == remove_pas):
+            UsersInfo.pop(remove_name)
+            with open("users.json", "w") as js_file:
+                json.dump(UsersInfo, js_file)
+
+            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": f"*****user {remove_name} Removed*****"})
+
+        else:
+
+            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": "*******User not Found*******"})
