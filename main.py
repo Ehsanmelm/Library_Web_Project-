@@ -68,3 +68,15 @@ def user_removing_process(request: Request, remove_name=Form(...), remove_pas=Fo
         else:
 
             return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": "*******User not Found*******"})
+
+# *********************************************
+# *****************Show Book*******************
+
+
+@webapp.get("/Books list", response_class=HTMLResponse)
+def show_book(request: Request):
+
+    with open("Books.json") as js_file:
+        Books_Info = json.load(js_file)
+
+    return templates.TemplateResponse("ShowBooks.htm", context={"request": request, "Show_book": Books_Info})
