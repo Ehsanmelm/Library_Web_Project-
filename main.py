@@ -80,3 +80,32 @@ def show_book(request: Request):
         Books_Info = json.load(js_file)
 
     return templates.TemplateResponse("ShowBooks.htm", context={"request": request, "Show_book": Books_Info})
+
+# *********************************************
+# ****************Remove Book******************
+
+
+@webapp.get("/remove book", response_class=HTMLResponse)
+def remove_Book(request: Request):
+    return templates.TemplateResponse("RemoveBook.htm", context={"request": request, "remove_book_msg": ""})
+
+
+@webapp.post("/RemovingBook", response_class=HTMLResponse)
+def removing_book(request: Request, book_id=Form(...)):
+
+    with open("Books.json", "r") as js_file:
+        books = json.load(js_file)
+
+    for i in range(len(books)):
+        if int(book_id) == books[i]['id']:
+
+            book_name = books[i]["title"]
+            books.pop(i)
+            with open("Books.json", "w") as js_file:
+                json.dump(books, js_file)
+            return templates.TemplateResponse("RemoveBook.htm", context={"request": request, "remove_book_msg": f"{book_name} removed"})
+            break
+        elif(i == len(books)-1):
+            return templates.TemplateResponse("RemoveBook.htm", context={"request": request, "remove_book_msg": "Book not found"})
+
+# *******************************************************
