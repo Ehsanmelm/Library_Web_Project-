@@ -1,0 +1,90 @@
+[
+    {
+        "id": 9781593279509,
+        "author": "chinua achebe",
+        "country": "nigeria",
+        "pages": 209,
+        "title": "things fall apart",
+        "year": 1958
+    },
+    {
+        "id": 9781593279510,
+        "author": "hans christian andersen",
+        "country": "denmark",
+        "pages": 784,
+        "title": "fairy tales",
+        "year": 1836
+    },
+    {
+        "id": 9781593279511,
+        "author": "dante alighieri",
+        "country": "italy",
+        "pages": 928,
+        "title": "the divine comedy",
+        "year": 1315
+    },
+    {
+        "id": 9781593279512,
+        "author": "unknown",
+        "country": "sumer and akkadian empire",
+        "pages": 160,
+        "title": "the epic of gilgamesh",
+        "year": -1700
+    },
+    {
+        "id": 9781593279513,
+        "author": " lloyd llewellyn-Jones",
+        "country": "achaemenid empire",
+        "pages": 176,
+        "title": "the book of job",
+        "year": -600
+    },
+    {
+        "id": 9781593279514,
+        "author": "hanan ai-shaykh",
+        "country": "india",
+        "pages": 288,
+        "title": "one thousand and one nights",
+        "year": 1200
+    },
+    {
+        "id": 9781593279515,
+        "author": "selma lagerlof",
+        "country": "iceland",
+        "pages": 384,
+        "title": "njils saga",
+        "year": 1350
+    },
+    {
+        "id": 9781593279516,
+        "author": "jane austen",
+        "country": "united kingdom",
+        "pages": 226,
+        "title": "pride and prejudice",
+        "year": 1813
+    },
+    {
+        "id": 9781593279517,
+        "author": "honorde balzac",
+        "country": "france",
+        "pages": 443,
+        "title": "le pre goriot",
+        "year": 1835
+    },
+    {
+        "id": 9781593279518,
+        "author": "samuel beckett",
+        "country": "republic of ireland",
+        "pages": 256,
+        "title": "molloy, malone dies, the unnamable, the trilogy",
+        "year": 1952
+    },
+    {
+        "id": 9781593279520,
+        "author": "ehsan",
+        "country": "iran",
+        "pages": 60,
+        "title": "library",
+        "year": 2022
+    }
+]
