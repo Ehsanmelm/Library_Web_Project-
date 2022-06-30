@@ -140,3 +140,33 @@ def saving_book_info(request: Request, add_book_author=Form(...), add_book_count
             with open("Books.json", "w") as js_file:
                 json.dump(BookList, js_file)
             return templates.TemplateResponse("AddBook.htm", context={"request": request, "add_book_msg": "book added successfully"})
+
+# *******************************************************
+# ***********************Book loan************************
+
+
+@webapp.get("/Book loan", response_class=HTMLResponse)
+def Book_loan(request: Request):
+    return templates.TemplateResponse("/BookLoan.htm", context={"request": request, "loan_page_msg": ""})
+
+
+@webapp.post("/loaningBook", response_class=HTMLResponse)
+def Book_Loaning(request: Request, loaned_name=Form(...), loaned_password=Form(...), loaned_book_id=Form(...)):
+
+    with open("Books.json", "r") as js_file:
+        Loan_BookList = json.load(js_file)
+
+    with open("users.json", "r") as js_file:
+        Loan_users = json.load(js_file)
+
+    if(loaned_name.lower() in Loan_users and loaned_password == Loan_users[loaned_name]):
+
+        for i in range(len(Loan_BookList)):
+            if(Loan_BookList[i]["id"] == int(loaned_book_id)):
+                return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} entrusted to {loaned_name}"})
+                break
+            elif(i == len(Loan_BookList)-1):
+                return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": "Book not found"})
+
+    else:
+        return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": "usename or password incorrect"})
