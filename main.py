@@ -109,3 +109,34 @@ def removing_book(request: Request, book_id=Form(...)):
             return templates.TemplateResponse("RemoveBook.htm", context={"request": request, "remove_book_msg": "Book not found"})
 
 # *******************************************************
+# ***********************Add Book************************
+
+
+@webapp.get("/add book", response_class=HTMLResponse)
+def add_book(request: Request):
+    return templates.TemplateResponse("AddBook.htm", context={"request": request, "add_book_msg": ""})
+
+
+@webapp.post("/AddingBook", response_class=HTMLResponse)
+def saving_book_info(request: Request, add_book_author=Form(...), add_book_country=Form(...), add_book_pages=Form(...), add_book_name=Form(...), add_book_year=Form(...), books_id=Form(...)):
+
+    adding_book_dict = {
+        "id": int(books_id),
+        "author": add_book_author.lower(),
+        "country": add_book_country.lower(),
+        "pages": int(add_book_pages),
+        "title": add_book_name.lower(),
+        "year": int(add_book_year)
+    }
+    with open("Books.json", "r") as js_file:
+        BookList = json.load(js_file)
+
+    for i in range(len(BookList)):
+        if(adding_book_dict["id"] == BookList[i]["id"]):
+            return templates.TemplateResponse("AddBook.htm", context={"request": request, "add_book_msg": "there is a same book in library"})
+            break
+        elif(i == len(BookList)-1):
+            BookList.append(adding_book_dict)
+            with open("Books.json", "w") as js_file:
+                json.dump(BookList, js_file)
+            return templates.TemplateResponse("AddBook.htm", context={"request": request, "add_book_msg": "book added successfully"})
