@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            background-color: #1b1b1b;
+
+        }
+
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .menu {
+            float: left;
+            width: 20%;
+            text-align: center;
+        }
+
+        .menu a {
+            background-color: #8f8a8a;
+            padding: 10px;
+            margin-top: 7px;
+            display: block;
+            width: 100%;
+            color: black;
+        }
+
+        .main {
+            float: left;
+            width: 60%;
+            padding: 0 20px;
+        }
+
+        .right {
+            background-color: #8f8a8a;
+            float: left;
+            width: 20%;
+            padding: 61px;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        @media only screen and (max-width: 620px) {
+
+            /* For mobile phones: */
+            .menu,
+            .main,
+            .right {
+                width: 100%;
+            }
+        }
+    </style>
+
+</head>
+
+<body style="font-family:Verdana;color:#aaaaaa;">
+
+
+
+    <div style="background-color:#8f8a8a;padding:15px;text-align:center; ">
+        <h1 style="color: aliceblue;">welcome to library </h1>
+    </div>
+
+    <div style="overflow:auto">
+        <div class="menu">
+            <a style="font-size:15px" href="/Add memeber">Add memeber</a>
+            <a style="font-size:15px" href="/Rmove member">Rmove member</a>
+            <a style="font-size:15px" href="/Books list">Books list</a>
+            <a style="font-size:15px" href="/add book">add book</a>
+            <a style="font-size:15px" href="/remove book">remove book</a>
+            <a style="font-size:15px" href="/Book loan">Book Loan</a>
+        </div>
+
+        <div class="main">
+            <h2></h2>
+            <p></p>
+        </div>
+
+        <div class="right">
+            <h2 style="color: aliceblue;">About</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+        </div>
+    </div>
+
+    <div style="background-color:#8f8a8a;text-align:center;padding:10px;margin-top:7px;"> </div>
+
+</body>
+
+</html>
