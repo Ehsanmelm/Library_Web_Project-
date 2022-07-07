@@ -1,79 +1,35 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <title>Login Page</title>
+  </head>
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title> Login Page </title>
-    <style>
-        Body {
-            font-family: Calibri, Helvetica, sans-serif;
-            background-color: #071A1E;
-        }
-
-        button {
-            background-color: #4CAF50;
-            width: 100%;
-            color: rgb(10, 0, 0);
-            padding: 15px;
-            margin: 10px 0px;
-            border: none;
-            cursor: pointer;
-        }
-
-        form {
-            border: 3px solid #f1f1f1;
-        }
-
-        input[type=text],
-        input[type=password] {
-            width: 100%;
-            margin: 8px 0;
-            padding: 12px 20px;
-            display: inline-block;
-            border: 2px solid rgb(13, 36, 13);
-            box-sizing: border-box;
-        }
-
-        button:hover {
-            opacity: 0.7;
-        }
-
-        .cancelbtn {
-            width: auto;
-            padding: 10px 18px;
-            margin: 10px 5px;
-        }
-
-
-        .container {
-            padding: 25px;
-            background-color: lightblue;
-        }
-
-        h1 {
-            color: #FFFAFA
-        }
-    </style>
-</head>
-
-<body>
-    <center>
-        <h1> Student Login Form </h1>
-    </center>
+  <body class="app">
+    <div class="title-baner">
+      <h1>Student Login Form</h1>
+      <hr />
+    </div>
     <form action="/loaningBook" method="post">
-        <div class="container">
-            <label>Usernme : </label>
-            <input type="text" placeholder="Enter username" name=loaned_name required>
-            <label>password : </label>
-            <input type="text" placeholder="Enter password" name=loaned_password required>
-            <label>id : </label>
-            <input type="text" placeholder="Enter Book Id" name=loaned_book_id required>
-
-            <button input type="submit"><b>Loan Book</b></button>
-
+      <div class="container">
+        <div class="input-box">
+          <input type="text" name="loaned_name" required />
+          <span>Usernme</span>
         </div>
+        <div class="input-box">
+          <input type="text" name="loaned_password" required />
+          <span>password</span>
+        </div>
+        <div class="input-box">
+          <input type="text" name="loaned_book_id" required />
+          <span>id</span>
+        </div>
+        <div class="submit-part">
+          <button input type="submit">Loan Book</button>
+          <font class="result-form" style="color: red">{{loan_page_msg}}</font>
+        </div>
+      </div>
     </form>
-    <font style="color: red;">{{loan_page_msg}}</font>
-</body>
-
+  </body>
 </html>
