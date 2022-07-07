@@ -1,0 +1,62 @@
+.title-baner h1 {
+  text-align: center;
+  color: #ededed;
+  margin: 2rem 0;
+  font-size: 2rem;
+  transition: 0.5s ease;
+}
+
+.title-baner hr {
+  margin-bottom: 4rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+  transition: 0.5s ease;
+  justify-content: center;
+  height: 70vh;
+}
+
+.menu li {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu li:last-child {
+  margin-bottom: 0;
+}
+
+.menu li a {
+  font-size: 1rem;
+  border: 1px solid #fff;
+  padding: 1rem;
+  border-radius: 4px;
+  flex-grow: 1;
+  text-align: center;
+  transition: 0.5s ease;
+}
+
+.menu li a:hover {
+  background-color: #ededed;
+  color: #1b1b1b;
+}
+
+@media screen and (min-width: 600px) {
+  .title-baner h1 {
+    font-size: 2.5rem;
+  }
+
+  .menu {
+    width: 40%;
+  }
+
+  .menu li a {
+    font-size: 1.5rem;
+  }
+}
