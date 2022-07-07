@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{%  static  'css/index.css'  %}" />
-    <title>Login Page</title>
-  </head>
 
-  <body class="app">
-    <div class="title-baner">
-      <h1>Student Login Form</h1>
-      <hr />
-    </div>
-    <form action="/AddingBook" method="post">
-      <div class="container">
-        <div class="input-box">
-          <input type="text" name="add_book_author" required />
-          <span>author :</span>
-        </div>
-        <div class="input-box">
-          <input type="text" name="add_book_country" required />
-          <span>country :</span>
-        </div>
-        <div class="input-box">
-          <input type="text" name="add_book_pages" required />
-          <span>pages:</span>
-        </div>
-        <div class="input-box">
-          <input type="text" name="add_book_name" required />
-          <span>title :</span>
-        </div>
-        <div class="input-box">
-          <input type="text" name="add_book_year" required />
-          <span>year :</span>
-        </div>
-        <div class="input-box">
-          <input type="text" name="books_id" required />
-          <span>id :</span>
-        </div>
-        <div class="submit-part">
-          <button input type="submit">Add Book</button>
-          <font class="result-form">{{add_book_msg}}</font>
-        </div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="{{ url_for('static', path='/index.css') }}" rel="stylesheet">
+  <title>Login Page</title>
+</head>
+
+<body class="app">
+  <div class="title-baner">
+    <h1>Student Login Form</h1>
+    <hr />
+  </div>
+  <form action="/AddingBook" method="post">
+    <div class="container">
+      <div class="input-box">
+        <input type="text" name="add_book_author" required />
+        <span>author :</span>
       </div>
-    </form>
-  </body>
+      <div class="input-box">
+        <input type="text" name="add_book_country" required />
+        <span>country :</span>
+      </div>
+      <div class="input-box">
+        <input type="text" name="add_book_pages" required />
+        <span>pages:</span>
+      </div>
+      <div class="input-box">
+        <input type="text" name="add_book_name" required />
+        <span>title :</span>
+      </div>
+      <div class="input-box">
+        <input type="text" name="add_book_year" required />
+        <span>year :</span>
+      </div>
+      <div class="input-box">
+        <input type="text" name="books_id" required />
+        <span>id :</span>
+      </div>
+      <div class="submit-part">
+        <button input type="submit">Add Book</button>
+        <font class="result-form">{{add_book_msg}}</font>
+      </div>
+    </div>
+  </form>
+</body>
+
 </html>

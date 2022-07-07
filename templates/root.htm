@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- css file -->
-    <link rel="stylesheet" href="{%  static  'css/index.css'  %}" />
-    <link rel="stylesheet" href="{%  static  'css/root.css'  %}" />
-  </head>
 
-  <body class="app">
-    <div class="title-baner">
-      <h1>Welcome To Library KHU</h1>
-      <hr />
-    </div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- css file -->
+  <link href="{{ url_for('static', path='/index.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', path='/root.css') }}" rel="stylesheet">
+</head>
 
-    <ul class="menu">
-      <li class="add-member">
-        <a href="/Add memeber">Add Member</a>
-      </li>
-      <li class="remove-member">
-        <a href="/Rmove member">Remove Member</a>
-      </li>
-      <li>
-        <a href="/Books list">Books List</a>
-      </li>
-      <li class="add-book">
-        <a href="/add book">Add Book</a>
-      </li>
-      <li class="remove-book">
-        <a href="/remove book">Remove Book</a>
-      </li>
-      <li>
-        <a href="/Book loan">Book Loan</a>
-      </li>
-    </ul>
-  </body>
+<body class="app">
+  <div class="title-baner">
+    <h1>Welcome To Library KHU</h1>
+    <hr />
+  </div>
+
+  <ul class="menu">
+    <li class="add-member">
+      <a href="/Add memeber">Add Member</a>
+    </li>
+    <li class="remove-member">
+      <a href="/Rmove member">Remove Member</a>
+    </li>
+    <li>
+      <a href="/Books list">Books List</a>
+    </li>
+    <li class="add-book">
+      <a href="/add book">Add Book</a>
+    </li>
+    <li class="remove-book">
+      <a href="/remove book">Remove Book</a>
+    </li>
+    <li>
+      <a href="/Book loan">Book Loan</a>
+    </li>
+  </ul>
+</body>
+
 </html>

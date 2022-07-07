@@ -9,10 +9,12 @@ from fastapi.templating import Jinja2Templates
 from numpy import choose
 from prompt_toolkit import HTML
 from requests import request
+from fastapi.staticfiles import StaticFiles
 # ******************************************
 
 webapp = FastAPI()
 templates = Jinja2Templates(directory="templates/")
+webapp.mount("/static", StaticFiles(directory="static"), name="static")
 
 # **********************ROOT*****************
 

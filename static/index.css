@@ -84,7 +84,7 @@ button {
   font-family: "Ubuntu";
 }
 
-.input-box input:focus ~ span {
+.input-box input:focus~span {
   top: 10px;
   left: 10px;
   font-size: 1rem;
