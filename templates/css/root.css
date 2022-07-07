@@ -1,15 +1,3 @@
-.title-baner h1 {
-  text-align: center;
-  color: #ededed;
-  margin: 2rem 0;
-  font-size: 2rem;
-  transition: 0.5s ease;
-}
-
-.title-baner hr {
-  margin-bottom: 4rem;
-}
-
 .menu {
   display: flex;
   flex-direction: column;
