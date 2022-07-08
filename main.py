@@ -155,6 +155,9 @@ def Book_loan(request: Request):
 @webapp.post("/loaningBook", response_class=HTMLResponse)
 def Book_Loaning(request: Request, loaned_name=Form(...), loaned_password=Form(...), loaned_book_id=Form(...)):
 
+    with open("Loaned_Book.json", "r") as js_file:
+        Check_Loaned_Book_Dict = json.load(js_file)
+
     with open("Books.json", "r") as js_file:
         Loan_BookList = json.load(js_file)
 
@@ -165,7 +168,23 @@ def Book_Loaning(request: Request, loaned_name=Form(...), loaned_password=Form(.
 
         for i in range(len(Loan_BookList)):
             if(Loan_BookList[i]["id"] == int(loaned_book_id)):
-                return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} entrusted to {loaned_name}"})
+                check_access_book_dict = {
+                    loaned_name: Loan_BookList[i]['title']}
+                count_j = 0
+                for j in Check_Loaned_Book_Dict.values():
+
+                    if(j == Loan_BookList[i]['title']):
+                        return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} Book has been lent"})
+
+                    elif(count_j == len(Check_Loaned_Book_Dict)-1):
+
+                        with open("Loaned_Book.json", "w") as js_file:
+                            Check_Loaned_Book_Dict[loaned_name.lower(
+                            )] = Loan_BookList[i]['title'].lower()
+                            json.dump(Check_Loaned_Book_Dict, js_file)
+                        return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} entrusted to {loaned_name}"})
+                    count_j += 1
+
                 break
             elif(i == len(Loan_BookList)-1):
                 return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": "Book not found"})
