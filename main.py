@@ -169,21 +169,23 @@ def Book_Loaning(request: Request, loaned_name=Form(...), loaned_password=Form(.
         for i in range(len(Loan_BookList)):
             if(Loan_BookList[i]["id"] == int(loaned_book_id)):
                 check_access_book_dict = {
-                    loaned_name: Loan_BookList[i]['title']}
-                count_j = 0
-                for j in Check_Loaned_Book_Dict.values():
+                    "username": loaned_name,
+                    "Title": Loan_BookList[i]['title'],
+                    "Password": loaned_password}
 
-                    if(j == Loan_BookList[i]['title']):
+                for j in range(len(Check_Loaned_Book_Dict)):
+
+                    if(Check_Loaned_Book_Dict[j]['Title'] == Loan_BookList[i]['title']):
                         return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} Book has been lent"})
 
-                    elif(count_j == len(Check_Loaned_Book_Dict)-1):
+                    elif(j == len(Check_Loaned_Book_Dict)-1):
 
                         with open("Loaned_Book.json", "w") as js_file:
-                            Check_Loaned_Book_Dict[loaned_name.lower(
-                            )] = Loan_BookList[i]['title'].lower()
+                            Check_Loaned_Book_Dict.append(
+                                check_access_book_dict)
                             json.dump(Check_Loaned_Book_Dict, js_file)
+
                         return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} entrusted to {loaned_name}"})
-                    count_j += 1
 
                 break
             elif(i == len(Loan_BookList)-1):
@@ -191,3 +193,15 @@ def Book_Loaning(request: Request, loaned_name=Form(...), loaned_password=Form(.
 
     else:
         return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": "usename or password incorrect"})
+
+# *******************************************************
+# *********************Loaned Books**********************
+
+
+@webapp.get("/Loaned Book List", response_class=HTMLResponse)
+def show_book(request: Request):
+
+    with open("Loaned_Book.json") as js_file:
+        LoanedBooks = json.load(js_file)
+
+    return templates.TemplateResponse("ShowLoanedBooks.htm", context={"request": request, "Show_loaned_book": LoanedBooks})
