@@ -41,10 +41,10 @@ def save_users_info(request: Request, name=Form(...), pas=Form(...), confirm_pas
         user_dict[name] = pas
         with open("users.json", "w") as js_file:
             json.dump(user_dict, js_file)
-        return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": f"*****user {name} added*****"})
+        return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": f"user {name} added"})
 
     else:
-        return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": "*******confirm password isnot correct*******"})
+        return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": "confirm password isnot correct"})
 
 # ***********************************************
 # *****************Remove member*****************
@@ -65,11 +65,11 @@ def user_removing_process(request: Request, remove_name=Form(...), remove_pas=Fo
             with open("users.json", "w") as js_file:
                 json.dump(UsersInfo, js_file)
 
-            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": f"*****user {remove_name} Removed*****"})
+            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": f"user {remove_name} Removed"})
 
         else:
 
-            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": "*******User not Found*******"})
+            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": "User not Found"})
 
 # *********************************************
 # *****************Show Book*******************
