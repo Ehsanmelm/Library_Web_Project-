@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html>
-
-<style>
+  <style>
     table,
     th,
     td {
-        text-align: center;
-        border-collapse: collapse;
+      text-align: center;
+      border-collapse: collapse;
     }
-</style>
+  </style>
 
-<body style="background-color:#1b1b1b">
-
-    <table style=" width: 80%; border: 1px solid black tr; margin-left: auto ; margin-right: auto;margin-top: auto;">
-        <tr>
-            <th style="font-size: 170%; color: #FFD369;">Title</th>
-            <th style="font-size: 170%; color: #FFD369;">Author</th>
-            {% for i in Show_book: %}
-            <!-- <br> -->
-        </tr>
-        <td style=" font-size: 150%;font-family: Brush Script; color: #EEEEEE; height:40px;"> {{i['title']}}</td>
-        <td style=" font-size: 150%;font-family: Brush Script; color: #EEEEEE;height:40px;"> {{i['author']}}</td>
-        <tr>
-            {% endfor%}
-
-
-        </tr>
-
-
-
-
-
+  <body style="background-color: #1b1b1b">
+    <table
+      style="
+        width: 80%;
+        border: 1px solid black tr;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: auto;
+      "
+    >
+      <tr>
+        <th style="font-size: 170%; color: #ffd369">Title</th>
+        <th style="font-size: 170%; color: #ffd369">Author</th>
+        {% for i in Show_book: %}
+        <!-- <br> -->
+      </tr>
+      <td
+        style="
+          font-size: 150%;
+          font-family: Brush Script;
+          color: #eeeeee;
+          height: 40px;
+        "
+      >
+        {{i['title']}}
+      </td>
+      <td
+        style="
+          font-size: 150%;
+          font-family: Brush Script;
+          color: #eeeeee;
+          height: 40px;
+        "
+      >
+        {{i['author']}}
+      </td>
+      <tr>
+        {% endfor%}
+      </tr>
     </table>
-
-</body>
-
-
-
-
+  </body>
 </html>
