@@ -9,10 +9,12 @@ from fastapi.templating import Jinja2Templates
 from numpy import choose
 from prompt_toolkit import HTML
 from requests import request
+from fastapi.staticfiles import StaticFiles
 # ******************************************
 
 webapp = FastAPI()
 templates = Jinja2Templates(directory="templates/")
+webapp.mount("/static", StaticFiles(directory="static"), name="static")
 
 # **********************ROOT*****************
 
@@ -39,10 +41,10 @@ def save_users_info(request: Request, name=Form(...), pas=Form(...), confirm_pas
         user_dict[name] = pas
         with open("users.json", "w") as js_file:
             json.dump(user_dict, js_file)
-        return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": f"*****user {name} added*****"})
+        return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": f"user {name} added"})
 
     else:
-        return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": "*******confirm password isnot correct*******"})
+        return templates.TemplateResponse("AddUser.htm", context={"request": request, "msg": "confirm password isnot correct"})
 
 # ***********************************************
 # *****************Remove member*****************
@@ -63,11 +65,11 @@ def user_removing_process(request: Request, remove_name=Form(...), remove_pas=Fo
             with open("users.json", "w") as js_file:
                 json.dump(UsersInfo, js_file)
 
-            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": f"*****user {remove_name} Removed*****"})
+            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": f"user {remove_name} Removed"})
 
         else:
 
-            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": "*******User not Found*******"})
+            return templates.TemplateResponse("Rmove_Member.htm", context={"request": request, "remove_msg": "User not Found"})
 
 # *********************************************
 # *****************Show Book*******************
@@ -153,6 +155,9 @@ def Book_loan(request: Request):
 @webapp.post("/loaningBook", response_class=HTMLResponse)
 def Book_Loaning(request: Request, loaned_name=Form(...), loaned_password=Form(...), loaned_book_id=Form(...)):
 
+    with open("Loaned_Book.json", "r") as js_file:
+        Check_Loaned_Book_Dict = json.load(js_file)
+
     with open("Books.json", "r") as js_file:
         Loan_BookList = json.load(js_file)
 
@@ -163,10 +168,40 @@ def Book_Loaning(request: Request, loaned_name=Form(...), loaned_password=Form(.
 
         for i in range(len(Loan_BookList)):
             if(Loan_BookList[i]["id"] == int(loaned_book_id)):
-                return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} entrusted to {loaned_name}"})
+                check_access_book_dict = {
+                    "username": loaned_name,
+                    "Title": Loan_BookList[i]['title'],
+                    "Password": loaned_password}
+
+                for j in range(len(Check_Loaned_Book_Dict)):
+
+                    if(Check_Loaned_Book_Dict[j]['Title'] == Loan_BookList[i]['title']):
+                        return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} Book has been lent"})
+
+                    elif(j == len(Check_Loaned_Book_Dict)-1):
+
+                        with open("Loaned_Book.json", "w") as js_file:
+                            Check_Loaned_Book_Dict.append(
+                                check_access_book_dict)
+                            json.dump(Check_Loaned_Book_Dict, js_file)
+
+                        return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": f"{Loan_BookList[i]['title']} entrusted to {loaned_name}"})
+
                 break
             elif(i == len(Loan_BookList)-1):
                 return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": "Book not found"})
 
     else:
         return templates.TemplateResponse("BookLoan.htm", context={"request": request, "loan_page_msg": "usename or password incorrect"})
+
+# *******************************************************
+# *********************Loaned Books**********************
+
+
+@webapp.get("/Loaned Book List", response_class=HTMLResponse)
+def show_book(request: Request):
+
+    with open("Loaned_Book.json") as js_file:
+        LoanedBooks = json.load(js_file)
+
+    return templates.TemplateResponse("ShowLoanedBooks.htm", context={"request": request, "Show_loaned_book": LoanedBooks})
