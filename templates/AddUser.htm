@@ -21,16 +21,21 @@
           <span>Username</span>
         </div>
         <div class="input-box">
-          <input type="password" name="pas" required />
+          <input type="password" name="pas" required autocomplete="off" />
           <span>Password</span>
         </div>
         <div class="input-box">
-          <input type="password" name="confirm_pass" required />
+          <input
+            type="password"
+            name="confirm_pass"
+            required
+            autocomplete="off"
+          />
           <span>confirm Password</span>
         </div>
         <div class="submit-part">
           <button input type="submit">Sign In</button>
-          <font class="result-form" style="color: red">{{msg}}</font>
+          <font class="result-form">{{msg}}</font>
         </div>
       </div>
     </form>

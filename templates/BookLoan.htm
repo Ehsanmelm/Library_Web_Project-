@@ -17,20 +17,30 @@
     <form action="/loaningBook" method="post">
       <div class="container">
         <div class="input-box">
-          <input type="text" name="loaned_name" required />
+          <input type="text" name="loaned_name" required autocomplete="off" />
           <span>Usernme</span>
         </div>
         <div class="input-box">
-          <input type="text" name="loaned_password" required />
+          <input
+            type="text"
+            name="loaned_password"
+            required
+            autocomplete="off"
+          />
           <span>password</span>
         </div>
         <div class="input-box">
-          <input type="text" name="loaned_book_id" required />
+          <input
+            type="text"
+            name="loaned_book_id"
+            required
+            autocomplete="off"
+          />
           <span>id</span>
         </div>
         <div class="submit-part">
           <button input type="submit">Loan Book</button>
-          <font class="result-form" style="color: red">{{loan_page_msg}}</font>
+          <font class="result-form">{{loan_page_msg}}</font>
         </div>
       </div>
     </form>
