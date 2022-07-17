@@ -163,7 +163,7 @@ def Book_Loaning(request: Request, loaned_name=Form(...), loaned_password=Form(.
 
     with open("users.json", "r") as js_file:
         Loan_users = json.load(js_file)
-
+    loaned_name = loaned_name.lower()
     if(loaned_name.lower() in Loan_users and loaned_password == Loan_users[loaned_name]):
 
         for i in range(len(Loan_BookList)):
