@@ -1,39 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', path='/css/index.css') }}"
-    />
-    <title>Login Page</title>
-  </head>
 
-  <body class="app">
-    <div class="title-baner">
-      <h1>Student Login Form</h1>
-      <hr />
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', path='/index.css') }}" />
+  <title>Login Page</title>
+</head>
+
+<body class="app">
+  <div class="title-baner">
+    <h1>Student Login Form</h1>
+    <hr />
+  </div>
+  <form action="/user_removing_process" method="post">
+    <div class="container">
+      <div class="input-box">
+        <input type="text" name="remove_name" required autocomplete="off" />
+        <span>Username</span>
+      </div>
+      <div class="input-box">
+        <input type="password" name="remove_pas" required autocomplete="off" />
+        <span>Password</span>
+      </div>
     </div>
-    <form action="/user_removing_process" method="post">
-      <div class="container">
-        <div class="input-box">
-          <input type="text" name="remove_name" required autocomplete="off" />
-          <span>Username</span>
-        </div>
-        <div class="input-box">
-          <input
-            type="password"
-            name="remove_pas"
-            required
-            autocomplete="off"
-          />
-          <span>Password</span>
-        </div>
-      </div>
-      <div class="submit-part">
-        <button input type="submit">Remove</button>
-        <font class="result-form" style="color: red">{{remove_msg}}</font>
-      </div>
-    </form>
-  </body>
+    <div class="submit-part">
+      <button input type="submit">Remove</button>
+      <font class="result-form" style="color: red">{{remove_msg}}</font>
+    </div>
+  </form>
+</body>
+
 </html>

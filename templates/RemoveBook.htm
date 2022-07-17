@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', path='/css/index.css') }}"
-    />
-    <title>Login Page</title>
-  </head>
 
-  <body class="app">
-    <div class="title-baner">
-      <h1>Removing Book</h1>
-      <hr />
-    </div>
-    <form action="/RemovingBook" method="post">
-      <div class="container">
-        <div class="input-box">
-          <input type="text" name="book_id" required autocomplete="off" />
-          <span>id</span>
-        </div>
-        <div class="submit-part">
-          <button input type="submit">Remove Book</button>
-          <font class="result-form">{{remove_book_msg}}</font>
-        </div>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', path='/index.css') }}" />
+  <title>Login Page</title>
+</head>
+
+<body class="app">
+  <div class="title-baner">
+    <h1>Removing Book</h1>
+    <hr />
+  </div>
+  <form action="/RemovingBook" method="post">
+    <div class="container">
+      <div class="input-box">
+        <input type="text" name="book_id" required autocomplete="off" />
+        <span>id</span>
       </div>
+      <div class="submit-part">
+        <button input type="submit">Remove Book</button>
+        <font class="result-form">{{remove_book_msg}}</font>
+      </div>
+    </div>
     </div>
   </form>
 </body>
