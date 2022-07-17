@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
@@ -38,37 +37,6 @@
           <button input type="submit">Sign In</button>
           <font class="result-form">{{msg}}</font>
         </div>
-=======
-
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="{{ url_for('static', path='/index.css') }}" rel="stylesheet">
-  <title>Login Page</title>
-</head>
-
-<body class="app">
-  <div class="title-baner">
-    <h1>Student Login Form</h1>
-    <hr />
-  </div>
-  <form action="/save_users_info" method="post">
-    <div class="container">
-      <div class="input-box">
-        <input type="text" name="name" required autocomplete="off" />
-        <span>Username</span>
-      </div>
-      <div class="input-box">
-        <input type="password" name="pas" required />
-        <span>Password</span>
-      </div>
-      <div class="input-box">
-        <input type="password" name="confirm_pass" required />
-        <span>confirm Password</span>
->>>>>>> c39e5854219b5f91813c3b084b05fdae00f17e6e
-      </div>
-      <div class="submit-part">
-        <button input type="submit">Sign In</button>
-        <font class="result-form" style="color: red">{{msg}}</font>
       </div>
     </div>
   </form>
